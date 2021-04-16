@@ -1,0 +1,7 @@
+{
+  "rpc": {
+    "mainnet": "https://mainnet.infura.io/v3/95f65ab099894076814e8526f52c9149",
+    "polygon": "https://rpc-mainnet.maticvigil.com/",
+    "bsc": "https://bsc-dataseed.binance.org/"
+  }
+}
