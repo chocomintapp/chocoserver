@@ -3,7 +3,7 @@ import { createConnection, ConnectionOptions } from 'typeorm';
 import { configService } from '../config/config.service';
 import { User } from '../user.decorator';
 import { ItemService } from '../item/item.service';
-import { Item } from '../model/item.entity';
+import { Item } from '../model/block.entity';
 import { ItemDTO } from '../item/item.dto';
 
 async function run() {
