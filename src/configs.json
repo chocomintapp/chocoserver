@@ -1,7 +1,0 @@
-{
-  "rpc": {
-    "mainnet": "https://mainnet.server.chocomint.app",
-    "polygon": "https://polygon.server.chocomint.app",
-    "bsc": "https://bsc.server.chocomint.app"
-  }
-}
