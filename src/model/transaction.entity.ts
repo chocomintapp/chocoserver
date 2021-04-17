@@ -14,21 +14,6 @@ export class Transaction {
   index: number;
 
   @Column()
-  nonce: number;
-
-  @Column()
-  from: string;
-
-  @Column()
-  to: string;
-
-  @Column()
-  gasUsed: number;
-
-  @Column({ type: 'bigint' })
-  gasPrice: string;
-
-  @Column()
   timestamp: number;
 
   @ManyToOne(() => Block)

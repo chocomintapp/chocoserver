@@ -10,7 +10,7 @@ export class Log {
   @Column()
   index: number;
 
-  @Column({ array: true })
+  @Column('text', { array: true })
   topics: string[];
 
   @Column()
