@@ -1,5 +1,5 @@
 import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
-import { Token } from '../tokens/entity/token.entity';
+import { Token } from './token.model';
 
 @Entity({ name: 'metadata' })
 export class Metadata {
