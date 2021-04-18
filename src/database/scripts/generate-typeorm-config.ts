@@ -1,10 +1,10 @@
-import { NestFactory } from '@nestjs/core';
-import { AppConfigModule } from '../../config/app/config.module';
-import { DatabasePostgresConfigModule } from '../../config/database/postgres/config.module';
-import { AppConfigService } from '../../config/app/config.service';
-import { DatabasePostgresConfigService } from '../../config/database/postgres/config.service';
-import { getTypeOrmConfig } from '../../common/helpers/typeorm.helper';
 import * as fs from 'fs';
+import { NestFactory } from '@nestjs/core';
+import { getTypeOrmConfig } from '../../common/helpers/typeorm.helper';
+import { AppConfigModule } from '../../config/app/config.module';
+import { AppConfigService } from '../../config/app/config.service';
+import { DatabasePostgresConfigModule } from '../../config/database/postgres/config.module';
+import { DatabasePostgresConfigService } from '../../config/database/postgres/config.service';
 
 async function bootstrap() {
   const appConfigModule = await NestFactory.create(AppConfigModule);

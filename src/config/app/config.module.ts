@@ -1,9 +1,9 @@
 import * as Joi from '@hapi/joi';
 import { Module } from '@nestjs/common';
-import configuration from './configuration';
-import { AppConfigService } from './config.service';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { defaultEnv } from '../../common/helpers/env.helper';
+import { AppConfigService } from './config.service';
+import configuration from './configuration';
 
 @Module({
   imports: [
