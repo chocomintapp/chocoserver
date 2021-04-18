@@ -1,4 +1,4 @@
-export const entities = ['dist/**/*.model{.js}'];
+export const entities = ['**/models/*.model{.ts,.js}'];
 export const migrationsTableName = 'migration';
-export const migrations = ['dist/migration/*.js'];
-export const migrationsDir = 'src/migration';
+export const migrations = ['src/database/migration/*.ts'];
+export const migrationsDir = 'src/database/migration';

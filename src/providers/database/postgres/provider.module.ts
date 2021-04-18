@@ -4,27 +4,22 @@ import { AppConfigModule } from '../../../config/app/config.module';
 import { AppConfigService } from '../../../config/app/config.service';
 import { DatabasePostgresConfigService } from '../../../config/database/postgres/config.service';
 import { DatabasePostgresConfigModule } from '../../../config/database/postgres/config.module';
-import { entities, migrationsTableName, migrations, migrationsDir } from '../../../common/constants/settings';
+import { getTypeOrmConfig } from '../../../common/helpers/typeorm.helper';
 
 @Module({
   imports: [
     TypeOrmModule.forRootAsync({
       imports: [AppConfigModule, DatabasePostgresConfigModule],
-      useFactory: (appConfigService: AppConfigService, postgresConfigService: DatabasePostgresConfigService) => ({
-        type: 'postgres',
-        host: postgresConfigService.host,
-        port: parseInt(postgresConfigService.port),
-        username: postgresConfigService.user,
-        password: postgresConfigService.password,
-        database: postgresConfigService.database,
-        entities,
-        migrationsTableName,
-        migrations,
-        cli: {
-          migrationsDir,
-        },
-        ssl: appConfigService.isProduction,
-      }),
+      useFactory: (appConfigService: AppConfigService, databasePostgresConfigService: DatabasePostgresConfigService) =>
+        getTypeOrmConfig({
+          type: 'postgres',
+          host: databasePostgresConfigService.host,
+          port: parseInt(databasePostgresConfigService.port),
+          username: databasePostgresConfigService.user,
+          password: databasePostgresConfigService.password,
+          database: databasePostgresConfigService.database,
+          ssl: appConfigService.isProduction,
+        }),
       inject: [AppConfigService, DatabasePostgresConfigService],
     }),
   ],

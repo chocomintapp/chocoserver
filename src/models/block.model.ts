@@ -8,7 +8,7 @@ export class Block {
   id: number;
 
   @Column()
-  number: number;
+  number2: number;
 
   @ManyToOne(() => Network)
   network: Network;
