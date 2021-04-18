@@ -1,6 +1,6 @@
 import { Resolver, Query } from '@nestjs/graphql';
 import { BlocksService } from './blocks.service';
-import { Block } from './entity/block.entity';
+import { Block } from './entities/block.entity';
 
 @Resolver()
 export class BlocksResolver {

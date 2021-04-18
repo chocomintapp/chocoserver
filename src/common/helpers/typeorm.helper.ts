@@ -1,4 +1,4 @@
-import { entities, migrationsTableName, migrations, migrationsDir } from '../constants/settings';
+import { entities, migrationsTableName, migrations, migrationsDir } from '../constants/typeorm.constant';
 
 export const getTypeOrmConfig = ({ type, host, port, username, password, database, ssl, isMigrationBuild }) => {
   const config = {

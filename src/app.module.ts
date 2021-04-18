@@ -1,21 +1,21 @@
 import { Module } from '@nestjs/common';
-// import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
-// import { AppController } from './app.controller';
-// import { AppService } from './app.service';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
 import { BlocksModule } from './models/blocks/blocks.module';
+import { NetworksModule } from './models/networks/networks.module';
 import { DatabasePostgresProviderModule } from './providers/database/postgres/provider.module';
 
 @Module({
   imports: [
     GraphQLModule.forRoot({
-      autoSchemaFile: true,
+      autoSchemaFile: 'scema.graphql',
     }),
     DatabasePostgresProviderModule,
     BlocksModule,
+    NetworksModule,
   ],
-  providers: [],
-  // controllers: [AppController],
-  // providers: [AppService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
