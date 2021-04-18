@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
-import { Event } from './event.model';
-import { Network } from './network.model';
+import { Event } from './event.entity';
+import { Network } from './network.entity';
 
 @Entity({ name: 'contract' })
 export class Contract {

@@ -19,6 +19,7 @@ import { getTypeOrmConfig } from '../../../common/helpers/typeorm.helper';
           password: databasePostgresConfigService.password,
           database: databasePostgresConfigService.database,
           ssl: appConfigService.isProduction,
+          isMigrationBuild: false,
         }),
       inject: [AppConfigService, DatabasePostgresConfigService],
     }),

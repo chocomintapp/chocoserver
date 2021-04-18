@@ -1,7 +1,7 @@
 import { entities, migrationsTableName, migrations, migrationsDir } from '../constants/settings';
 
-export const getTypeOrmConfig = ({ type, host, port, username, password, database, ssl }) => {
-  return {
+export const getTypeOrmConfig = ({ type, host, port, username, password, database, ssl, isMigrationBuild }) => {
+  const config = {
     type,
     host,
     port,
@@ -9,11 +9,18 @@ export const getTypeOrmConfig = ({ type, host, port, username, password, databas
     password,
     database,
     entities,
-    migrationsTableName,
-    migrations,
-    cli: {
-      migrationsDir,
-    },
     ssl,
   };
+  if (isMigrationBuild) {
+    return {
+      ...config,
+      migrationsTableName,
+      migrations,
+      cli: {
+        migrationsDir,
+      },
+    };
+  } else {
+    return config;
+  }
 };

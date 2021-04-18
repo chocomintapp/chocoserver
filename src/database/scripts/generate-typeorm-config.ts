@@ -21,6 +21,7 @@ async function bootstrap() {
     password: databasePostgresConfigService.password,
     database: databasePostgresConfigService.database,
     ssl: appConfigService.isProduction,
+    isMigrationBuild: true,
   });
   fs.writeFileSync('ormconfig.json', JSON.stringify(typeOrmConfig, null, 2));
 }

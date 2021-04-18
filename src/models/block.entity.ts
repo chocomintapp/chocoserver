@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
-import { Transaction } from './transaction.model';
-import { Network } from './network.model';
+import { Transaction } from './transaction.entity';
+import { Network } from './network.entity';
 
 @Entity({ name: 'block' })
 export class Block {
