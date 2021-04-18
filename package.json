@@ -59,6 +59,8 @@
   },
   "devDependencies": {
     "@chocomintapp/eslint-config-chocomint-nest": "^0.0.2",
+    "@commitlint/cli": "^12.1.1",
+    "@commitlint/config-conventional": "^12.1.1",
     "@nestjs/cli": "^7.6.0",
     "@nestjs/schematics": "^7.3.0",
     "@nestjs/testing": "^7.6.15",
