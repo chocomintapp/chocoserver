@@ -6,7 +6,6 @@ import { AppConfigService } from './config/app/config.service';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const appConfig: AppConfigService = app.get('AppConfigService');
-
   if (!appConfig.isProduction) {
     const document = SwaggerModule.createDocument(
       app,
