@@ -1,10 +1,12 @@
 #!/bin/bash
 set -e
 
-DATABASE="chocoserver_database"
-PASSWORD="chocoserver_password"
-USER="postgres"
-PORT=5432
+export $(cat .development.env | xargs)
+
+DATABASE=$POSTGRES_DATABASE
+PASSWORD=$POSTGRES_PASSWORD
+USER=$POSTGRES_USER
+PORT=$POSTGRES_PORT
 
 echo "stop & remove old docker and start new instance"
 (docker kill $DATABASE || :) \
@@ -14,10 +16,8 @@ echo "stop & remove old docker and start new instance"
     -p $PORT:$PORT \
     -d postgres
 
-# wait for pg to start
 echo "sleep wait for pg-server to start"
 SLEEP 3
 
-# create the db
 echo "CREATE DATABASE $DATABASE ENCODING 'UTF-8';" | docker exec -i $DATABASE psql -U $USER
 echo "\l" | docker exec -i $DATABASE psql -U $USER
