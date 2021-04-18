@@ -9,12 +9,13 @@ async function bootstrap() {
   if (!configService.isProduction()) {
     const document = SwaggerModule.createDocument(
       app,
-      new DocumentBuilder().setTitle('Item API').setDescription('My Item API').build(),
+      new DocumentBuilder().setTitle('Chocoserver API').setDescription('Chocoserver API').build(),
     );
 
     SwaggerModule.setup('docs', app, document);
   }
 
+  app.enableShutdownHooks();
   await app.listen(3000);
 }
 bootstrap();

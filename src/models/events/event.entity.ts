@@ -1,9 +1,9 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
-import { Transaction } from './transaction.entity';
-import { Contract } from './contract.entity';
+import { Transaction } from '../transactions/transaction.entity';
+import { Contract } from '../contracts/contract.entity';
 
-@Entity({ name: 'log' })
-export class Log {
+@Entity({ name: 'event' })
+export class Event {
   @PrimaryGeneratedColumn()
   id: number;
 

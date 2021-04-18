@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToMany } from 'typeorm';
-import { Block } from './block.entity';
-import { Log } from './log.entity';
+import { Block } from '../blocks/block.entity';
+import { Event } from '../events/event.entity';
 
 @Entity({ name: 'transaction' })
 export class Transaction {
@@ -19,6 +19,6 @@ export class Transaction {
   @ManyToOne(() => Block)
   block: Block;
 
-  @OneToMany(() => Log, (x) => x.id)
-  logs: Block;
+  @OneToMany(() => Event, (x) => x.id)
+  events: Event[];
 }

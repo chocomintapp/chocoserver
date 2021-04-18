@@ -1,6 +1,6 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne, OneToOne } from 'typeorm';
-import { Contract } from './contract.entity';
-import { Metadata } from './metadata.entity';
+import { Contract } from '../../contracts/contract.entity';
+import { Metadata } from '../../metadata/metadata.entity';
 
 @Entity({ name: 'token' })
 export class Token {
