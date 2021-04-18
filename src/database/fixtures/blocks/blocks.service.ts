@@ -1,15 +1,15 @@
-import { Injectable } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
-import { Block } from '../../../models/blocks/entities/block.entity';
-import { IBlock } from '../../../models/blocks/interfaces/block.interface';
-import { blocks } from './data';
+import { Injectable } from "@nestjs/common";
+import { InjectRepository } from "@nestjs/typeorm";
+import { Repository } from "typeorm";
+import { Block } from "../../../models/blocks/entities/block.entity";
+import { IBlock } from "../../../models/blocks/interfaces/block.interface";
+import { blocks } from "./data";
 
 @Injectable()
 export class BlocksFixtureService {
   constructor(
     @InjectRepository(Block)
-    private readonly blockRepository: Repository<Block>,
+    private readonly blockRepository: Repository<Block>
   ) {}
 
   create(): Array<Promise<Block>> {

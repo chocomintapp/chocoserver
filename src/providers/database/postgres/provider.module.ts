@@ -1,10 +1,10 @@
-import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
-import { getTypeOrmConfig } from '../../../common/helpers/typeorm.helper';
-import { AppConfigModule } from '../../../config/app/config.module';
-import { AppConfigService } from '../../../config/app/config.service';
-import { DatabasePostgresConfigModule } from '../../../config/database/postgres/config.module';
-import { DatabasePostgresConfigService } from '../../../config/database/postgres/config.service';
+import { Module } from "@nestjs/common";
+import { TypeOrmModule } from "@nestjs/typeorm";
+import { getTypeOrmConfig } from "../../../common/helpers/typeorm.helper";
+import { AppConfigModule } from "../../../config/app/config.module";
+import { AppConfigService } from "../../../config/app/config.service";
+import { DatabasePostgresConfigModule } from "../../../config/database/postgres/config.module";
+import { DatabasePostgresConfigService } from "../../../config/database/postgres/config.service";
 
 @Module({
   imports: [
@@ -12,7 +12,7 @@ import { DatabasePostgresConfigService } from '../../../config/database/postgres
       imports: [AppConfigModule, DatabasePostgresConfigModule],
       useFactory: (appConfigService: AppConfigService, databasePostgresConfigService: DatabasePostgresConfigService) =>
         getTypeOrmConfig({
-          type: 'postgres',
+          type: "postgres",
           host: databasePostgresConfigService.host,
           port: parseInt(databasePostgresConfigService.port),
           username: databasePostgresConfigService.user,

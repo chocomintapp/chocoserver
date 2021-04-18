@@ -1,21 +1,10 @@
-import { Module } from '@nestjs/common';
-// import { GraphQLModule } from '@nestjs/graphql';
-// import { AppController } from './app.controller';
-// import { AppService } from './app.service';
-// import { BlocksModule } from './models/blocks/blocks.module';
-// import { NetworksModule } from './models/networks/networks.module';
-// import { DatabasePostgresProviderModule } from './providers/database/postgres/provider.module';
+import { Module, Logger } from "@nestjs/common";
+import { DatabasePostgresProviderModule } from "../../providers/database/postgres/provider.module";
+import { NetworksSeederModule } from "./networks/networks.module";
+import { Seeder } from "./seeder";
 
 @Module({
-  // imports: [
-  //   GraphQLModule.forRoot({
-  //     autoSchemaFile: 'scema.graphql',
-  //   }),
-  //   DatabasePostgresProviderModule,
-  //   BlocksModule,
-  //   NetworksModule,
-  // ],
-  // controllers: [AppController],
-  // providers: [AppService],
+  imports: [DatabasePostgresProviderModule, NetworksSeederModule],
+  providers: [Logger, Seeder],
 })
-export class AppModule {}
+export class SeederModule {}

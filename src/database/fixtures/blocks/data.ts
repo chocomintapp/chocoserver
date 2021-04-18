@@ -1,5 +1,5 @@
-import { IBlock } from '../../../models/blocks/interfaces/block.interface';
-import { networks } from '../../seeders/networks/data';
+import { IBlock } from "../../../models/blocks/interfaces/block.interface";
+import { networks } from "../../seeders/networks/data";
 const network = networks[0];
 
 export const blocks: IBlock[] = [
