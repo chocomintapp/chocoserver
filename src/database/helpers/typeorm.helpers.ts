@@ -1,6 +1,4 @@
-import { entitiePath, migrationsTableName, migrations, migrationsDir } from "../constants/typeorm.constant";
-
-console.log(`${__dirname}${entitiePath}`);
+import { entitiePath, migrationsTableName, migrations, migrationsDir } from "../../common/constants/typeorm.constant";
 
 export const getTypeormRuntimeConfig = (typeOrmConfig) => ({
   type: typeOrmConfig.type,
@@ -9,7 +7,7 @@ export const getTypeormRuntimeConfig = (typeOrmConfig) => ({
   username: typeOrmConfig.username,
   password: typeOrmConfig.password,
   database: typeOrmConfig.database,
-  entities: [`dist/${entitiePath}`],
+  entities: [`src/${entitiePath}`],
   ssl: typeOrmConfig.ssl,
 });
 

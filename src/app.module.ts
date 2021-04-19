@@ -4,14 +4,14 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { BlocksModule } from "./models/blocks/blocks.module";
 import { NetworksModule } from "./models/networks/networks.module";
-import { DatabasePostgresProviderModule } from "./providers/database/postgres/provider.module";
+import { DatabaseProviderModule } from "./providers/helpers/database.helper";
 
 @Module({
   imports: [
     GraphQLModule.forRoot({
       autoSchemaFile: "scema.graphql",
     }),
-    DatabasePostgresProviderModule,
+    DatabaseProviderModule,
     BlocksModule,
     NetworksModule,
   ],

@@ -1,10 +1,13 @@
-// import { Logger } from "@nestjs/common";
-// import { NestFactory } from "@nestjs/core";
-// import { Seeder } from "../seeders/seeder";
-// import { SeederModule } from "../seeders/seeder.module";
+import { NestFactory } from "@nestjs/core";
+import { SeederModule } from "../seeders/seeder.module";
+import { SeederService } from "../seeders/seeder.service";
 
 async function bootstrap() {
-  // const app = await NestFactory.create(SeederModule);
+  const seeder = await NestFactory.create(SeederModule);
+  const seederService = seeder.get(SeederService);
+
+  const test = seeder.get(SeederModule);
+  console.log(test);
   // NestFactory.createApplicationContext(SeederModule)
   //   .then((appContext) => {
   //     const logger = appContext.get(Logger);
