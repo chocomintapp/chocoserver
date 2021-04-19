@@ -5,7 +5,7 @@ export $(cat .development.env | xargs)
 
 DATABASE=$POSTGRES_DATABASE
 PASSWORD=$POSTGRES_PASSWORD
-USER=$POSTGRES_USER
+USERNAME=$POSTGRES_USERNAME
 PORT=$POSTGRES_PORT
 
 echo "stop & remove old docker and start new instance"
@@ -19,5 +19,5 @@ echo "stop & remove old docker and start new instance"
 echo "sleep wait for pg-server to start"
 SLEEP 3
 
-echo "CREATE DATABASE $DATABASE ENCODING 'UTF-8';" | docker exec -i $DATABASE psql -U $USER
-echo "\l" | docker exec -i $DATABASE psql -U $USER
+echo "CREATE DATABASE $DATABASE ENCODING 'UTF-8';" | docker exec -i $DATABASE psql -U $USERNAME
+echo "\l" | docker exec -i $DATABASE psql -U $USERNAME

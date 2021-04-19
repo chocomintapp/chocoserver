@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 
-import { helloMessage } from "./common/constants/message.constant";
+import { helloMessage } from "./config/constants/message.constant";
 
 describe("AppController", () => {
   let appController: AppController;

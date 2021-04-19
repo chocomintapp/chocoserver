@@ -1,28 +1,22 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { getTypeOrmConfig } from "../../../common/helpers/typeorm.helper";
-import { AppConfigModule } from "../../../config/app/config.module";
-import { AppConfigService } from "../../../config/app/config.service";
-import { DatabasePostgresConfigModule } from "../../../config/database/postgres/config.module";
-import { DatabasePostgresConfigService } from "../../../config/database/postgres/config.service";
+import { appEnvService } from "../../../config/env/app/env.module";
+import { databasePostgresEnvService } from "../../../config/env/database/postgres/env.module";
+import { getTypeormRuntimeConfig } from "../../../database/helpers/typeorm.helpers";
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
-      imports: [AppConfigModule, DatabasePostgresConfigModule],
-      useFactory: (appConfigService: AppConfigService, databasePostgresConfigService: DatabasePostgresConfigService) =>
-        getTypeOrmConfig({
-          type: "postgres",
-          host: databasePostgresConfigService.host,
-          port: parseInt(databasePostgresConfigService.port),
-          username: databasePostgresConfigService.user,
-          password: databasePostgresConfigService.password,
-          database: databasePostgresConfigService.database,
-          ssl: appConfigService.isProduction,
-          isMigrationBuild: false,
-        }),
-      inject: [AppConfigService, DatabasePostgresConfigService],
-    }),
+    TypeOrmModule.forRoot(
+      getTypeormRuntimeConfig({
+        type: "postgres",
+        host: databasePostgresEnvService.host,
+        port: parseInt(databasePostgresEnvService.port),
+        username: databasePostgresEnvService.username,
+        password: databasePostgresEnvService.password,
+        database: databasePostgresEnvService.database,
+        ssl: appEnvService.isProduction,
+      })
+    ),
   ],
 })
 export class DatabasePostgresProviderModule {}

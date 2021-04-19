@@ -1,6 +1,6 @@
 import { ObjectType, Field } from "@nestjs/graphql";
 import { Entity, Column, ManyToOne } from "typeorm";
-import { EntityBase } from "../../../common/models/base/entities/base.entity";
+import { EntityBase } from "../../../config/models/base/entities/base.entity";
 import { Network } from "../../networks/entities/network.entity";
 import { IBlock } from "../interfaces/block.interface";
 
