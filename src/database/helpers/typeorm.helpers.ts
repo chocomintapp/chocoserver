@@ -1,4 +1,4 @@
-import { entitiePath, migrationsTableName, migrations, migrationsDir } from "../../config/constants/typeorm.constant";
+import { entitiePath, migrationsTableName, migrations, migrationsDir } from "../constants/typeorm.constant";
 
 console.log(`${__dirname}${entitiePath}`);
 

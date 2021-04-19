@@ -1,7 +1,7 @@
 import { Module } from "@nestjs/common";
 import { TypeOrmModule } from "@nestjs/typeorm";
-import { appEnvService } from "../../../config/env/app/env.module";
-import { databasePostgresEnvService } from "../../../config/env/database/postgres/env.module";
+import { appConfigService } from "../../../common/config/app/config.module";
+import { databasePostgresConfigService } from "../../../common/config/database/postgres/config.module";
 import { getTypeormRuntimeConfig } from "../../../database/helpers/typeorm.helpers";
 
 @Module({
@@ -9,12 +9,12 @@ import { getTypeormRuntimeConfig } from "../../../database/helpers/typeorm.helpe
     TypeOrmModule.forRoot(
       getTypeormRuntimeConfig({
         type: "postgres",
-        host: databasePostgresEnvService.host,
-        port: parseInt(databasePostgresEnvService.port),
-        username: databasePostgresEnvService.username,
-        password: databasePostgresEnvService.password,
-        database: databasePostgresEnvService.database,
-        ssl: appEnvService.isProduction,
+        host: databasePostgresConfigService.host,
+        port: parseInt(databasePostgresConfigService.port),
+        username: databasePostgresConfigService.username,
+        password: databasePostgresConfigService.password,
+        database: databasePostgresConfigService.database,
+        ssl: appConfigService.isProduction,
       })
     ),
   ],
