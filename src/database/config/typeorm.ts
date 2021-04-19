@@ -1,8 +1,8 @@
 import { appConfigService } from "../../common/config/app/config.module";
 import { databasePostgresConfigService } from "../../common/config/database/postgres/config.module";
-import { getTypeormMigrationConfig } from "../helpers/typeorm.helpers";
+import { getTypeormConfig } from "../helpers/typeorm.helpers";
 
-export = getTypeormMigrationConfig({
+export = getTypeormConfig({
   type: appConfigService.database,
   host: databasePostgresConfigService.host,
   port: parseInt(databasePostgresConfigService.port),

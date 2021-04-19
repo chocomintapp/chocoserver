@@ -16,7 +16,7 @@
     "typeorm:migration:generate": "yarn typeorm migration:generate -n init",
     "typeorm:migration:run": "yarn typeorm migration:run",
     "typeorm:migration:revert": "yarn typeorm migration:revert",
-    "seed": "ts-node-dev ./src/database/scripts/seed.ts",
+    "seed": "ts-node ./src/database/scripts/seed.ts",
     "test": "jest",
     "test:watch": "jest --watch",
     "test:coverage": "jest --coverage",
@@ -24,7 +24,6 @@
     "predev": "yarn clean",
     "dev": "run-s dev:*",
     "dev:database": "./src/database/scripts/database.sh",
-    "dev:migrate": "yarn typeorm:migration:run",
     "dev:app": "nest start --watch --debug",
     "prebuild": "yarn clean",
     "build": "nest build",
@@ -74,6 +73,7 @@
     "ts-jest": "^26.5.4",
     "ts-loader": "^8.0.18",
     "ts-node": "^9.1.1",
+    "ts-node-dev": "^1.1.6",
     "tsconfig-paths": "^3.9.0",
     "typescript": "^4.2.3"
   }
