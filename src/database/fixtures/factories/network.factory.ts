@@ -4,7 +4,7 @@ import { Network } from "../../../models/networks/entities/network.entity";
 
 define(Network, () => {
   const network = new Network();
-  network.id = faker.datatype.number();
+  network.chainId = faker.datatype.number();
   network.name = faker.lorem.word();
   return network;
 });

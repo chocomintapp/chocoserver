@@ -1,8 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
+import { In, Repository } from "typeorm";
+import { GetNetworkArgs } from "./dto/get-network.args";
+import { GetNetworksArgs } from "./dto/get-networks.args";
 import { Network } from "./entities/network.entity";
-import { INetwork } from "./interfaces/network.interface";
 
 @Injectable()
 export class NetworksService {
@@ -11,11 +12,24 @@ export class NetworksService {
     private readonly networkRepository: Repository<Network>
   ) {}
 
-  async saveAll(networks: INetwork[]): Promise<Network[]> {
-    return await this.networkRepository.save(networks);
+  async findOneById(args: GetNetworkArgs): Promise<Network> {
+    const { chainId } = args;
+    return await this.networkRepository.findOne({ chainId }, { relations: ["block"] });
   }
 
-  async findAll(): Promise<Network[]> {
-    return await this.networkRepository.find();
+  async findAll(args: GetNetworksArgs): Promise<Network[]> {
+    const { chainIds } = args;
+
+    // FIXME #16: I'm feeling that this where implementation look not good...
+
+    const where = {} as any;
+    if (chainIds) {
+      where.network = In(chainIds);
+    }
+
+    return await this.networkRepository.find({
+      where,
+      relations: ["blocks"],
+    });
   }
 }

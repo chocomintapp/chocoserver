@@ -1,7 +1,7 @@
 import { IBlock } from "../../blocks/interfaces/block.interface";
 
 export interface INetwork {
-  id: number;
+  chainId: number;
   name: string;
   blocks?: IBlock[];
 }
