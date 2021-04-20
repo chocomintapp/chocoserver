@@ -4,7 +4,7 @@ import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 import { BlocksModule } from "./models/blocks/blocks.module";
 import { NetworksModule } from "./models/networks/networks.module";
-import { DatabaseProviderModule } from "./providers/helpers/database.helper";
+import { DatabaseProviderModule } from "./providers/database/provider.module";
 
 @Module({
   imports: [
