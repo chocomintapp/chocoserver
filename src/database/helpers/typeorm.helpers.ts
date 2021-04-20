@@ -3,6 +3,8 @@ import {
   migrationsTableName,
   migrationPath,
   migrationsDir,
+  seeds,
+  factories,
 } from "../../common/constants/typeorm.constant";
 
 export const getTypeormConfig = (typeOrmConfig) => ({
@@ -18,5 +20,7 @@ export const getTypeormConfig = (typeOrmConfig) => ({
     migrationsDir,
   },
   entities: [`${__dirname}/../../${entitiyPath}`],
+  seeds,
+  factories,
   ssl: typeOrmConfig.ssl,
 });

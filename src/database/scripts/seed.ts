@@ -1,10 +1,13 @@
 import { NestFactory } from "@nestjs/core";
-import { SeederModule } from "../seeders/seeder.module";
-import { SeederService } from "../seeders/seeder.service";
 
-async function bootstrap() {
-  const seeder = await NestFactory.create(SeederModule);
-  const seederService = seeder.get(SeederService);
-  await seederService.seedNetworks();
+import { AppModule } from "../../app.module";
+import { NetworksService } from "../../models/networks/networks.service";
+
+// import { networksSeed } from "../fixtures/network.fixture";
+
+async function seed() {
+  const app = await NestFactory.create(AppModule);
+  // const networksService = app.get(NetworksService);
+  // await networksService.saveAll(networksSeed);
 }
-bootstrap();
+seed();

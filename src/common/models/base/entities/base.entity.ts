@@ -5,10 +5,6 @@ import { IBaseEntity } from "../interfaces/base.interface";
 
 export class EntityBase implements IBaseEntity {
   @Field()
-  @PrimaryGeneratedColumn()
-  id: number;
-
-  @Field()
   @Column()
   @CreateDateColumn()
   created_at: Date;
