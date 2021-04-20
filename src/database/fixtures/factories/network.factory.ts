@@ -1,9 +1,11 @@
 import { define } from "typeorm-seeding";
 import { Network } from "../../../models/networks/entities/network.entity";
 
-define(Network, (faker) => {
+import * as faker from "faker";
+
+define(Network, () => {
   const network = new Network();
-  network.id = faker.random.number(1);
-  network.name = faker.name.findName();
+  network.id = faker.datatype.number();
+  network.name = faker.lorem.word();
   return network;
 });

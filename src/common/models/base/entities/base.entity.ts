@@ -6,11 +6,11 @@ import { IBaseEntity } from "../interfaces/base.interface";
 export class EntityBase implements IBaseEntity {
   @Field()
   @Column()
-  @CreateDateColumn()
+  @CreateDateColumn({ type: "timestamptz" })
   created_at: Date;
 
   @Field()
   @Column()
-  @UpdateDateColumn()
+  @UpdateDateColumn({ type: "timestamptz" })
   updated_at: Date;
 }

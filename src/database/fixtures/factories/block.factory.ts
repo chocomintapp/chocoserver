@@ -1,8 +1,12 @@
-import { define } from "typeorm-seeding";
+import { define, factory } from "typeorm-seeding";
 import { Block } from "../../../models/blocks/entities/block.entity";
+import { Network } from "../../../models/networks/entities/network.entity";
 
-define(Block, (faker) => {
+import * as faker from "faker";
+
+define(Block, () => {
   const block = new Block();
-  block.id = faker.random.number(1);
+  block.id = faker.datatype.number();
+  block.network = factory(Network)() as any;
   return block;
 });
