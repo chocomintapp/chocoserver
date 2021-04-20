@@ -5,7 +5,7 @@ import { Network } from "../../../models/networks/entities/network.entity";
 
 define(Block, () => {
   const block = new Block();
-  block.id = faker.datatype.number();
+  block.blockNumber = faker.datatype.number();
   block.network = factory(Network)() as any;
   return block;
 });

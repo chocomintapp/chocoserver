@@ -1,6 +1,6 @@
 import { INetwork } from "../../networks/interfaces/network.interface";
 
 export interface IBlock {
-  id: number;
+  blockNumber: number;
   network: INetwork;
 }

@@ -9,7 +9,7 @@ export default class Seed implements Seeder {
     await factory(Network)()
       .map(async (network: Network) => {
         networkCounter++;
-        network.id = networkCounter;
+        network.chainId = networkCounter;
         return network;
       })
       .createMany(networkCount);
@@ -21,7 +21,7 @@ export default class Seed implements Seeder {
       await factory(Block)()
         .map(async (block: Block) => {
           blockCounter++;
-          block.id = blockCounter;
+          block.blockNumber = blockCounter;
           block.network = networkId as any;
           return block;
         })

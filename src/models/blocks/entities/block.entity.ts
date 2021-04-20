@@ -8,10 +8,10 @@ import { IBlock } from "../interfaces/block.interface";
 @Entity()
 export class Block extends EntityBase implements IBlock {
   @Field()
-  @PrimaryColumn({ comment: "blockNumber" })
-  id: number;
+  @PrimaryColumn()
+  blockNumber: number;
 
-  @Field(() => [Network])
-  @ManyToOne(() => Network, { primary: true })
+  @Field(() => Network)
+  @ManyToOne(() => Network, (network) => network.blocks, { primary: true })
   network: Network;
 }

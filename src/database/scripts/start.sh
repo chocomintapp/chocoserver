@@ -10,9 +10,9 @@ PORT=$DATABASE_PORT
 
 echo "start databse instance"
 docker run --name $DATABASE -e POSTGRES_PASSWORD=$PASSWORD \
-    -e PGPASSWORD=$PASSWORD \
-    -p $PORT:$PORT \
-    -d postgres
+  -e PGPASSWORD=$PASSWORD \
+  -p $PORT:$PORT \
+  -d postgres
 
 echo "sleep wait for pg-server to start"
 SLEEP 3

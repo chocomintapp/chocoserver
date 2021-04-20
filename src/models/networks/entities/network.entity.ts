@@ -8,14 +8,14 @@ import { INetwork } from "../interfaces/network.interface";
 @Entity()
 export class Network extends EntityBase implements INetwork {
   @Field()
-  @PrimaryColumn({ comment: "chainId" })
-  id: number;
+  @PrimaryColumn()
+  chainId: number;
 
   @Field()
   @Column()
   name: string;
 
   @Field(() => [Block], { nullable: true })
-  @OneToMany(() => Block, (x) => x.id)
+  @OneToMany(() => Block, (block) => block.network)
   blocks?: Block[];
 }
