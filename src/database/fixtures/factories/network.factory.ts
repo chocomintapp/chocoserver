@@ -1,7 +1,6 @@
+import * as faker from "faker";
 import { define } from "typeorm-seeding";
 import { Network } from "../../../models/networks/entities/network.entity";
-
-import * as faker from "faker";
 
 define(Network, () => {
   const network = new Network();

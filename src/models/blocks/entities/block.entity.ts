@@ -12,6 +12,6 @@ export class Block extends EntityBase implements IBlock {
   id: number;
 
   @Field(() => [Network])
-  @ManyToOne(() => Network)
+  @ManyToOne(() => Network, { primary: true })
   network: Network;
 }

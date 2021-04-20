@@ -1,5 +1,5 @@
 import { Field } from "@nestjs/graphql";
-import { Column, PrimaryGeneratedColumn, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 import { IBaseEntity } from "../interfaces/base.interface";
 

@@ -1,12 +1,9 @@
-import { Seeder, Factory } from "typeorm-seeding";
-import { Connection } from "typeorm";
+import { Seeder, factory } from "typeorm-seeding";
 import { Block } from "../../../models/blocks/entities/block.entity";
 import { Network } from "../../../models/networks/entities/network.entity";
 
-import * as faker from "faker";
-
 export default class Seed implements Seeder {
-  public async run(factory: Factory, connection: Connection): Promise<any> {
+  public async run(): Promise<any> {
     const networkCount = 5;
     let networkCounter = 0;
     await factory(Network)()
