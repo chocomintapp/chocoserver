@@ -9,7 +9,7 @@ USERNAME=$DATABASE_USERNAME
 PORT=$DATABASE_PORT
 
 echo "start databse instance"
-docker run --name $DATABASE -e DATABASE_PASSWORD=$PASSWORD \
+docker run --name $DATABASE -e POSTGRES_PASSWORD=$PASSWORD \
     -e PGPASSWORD=$PASSWORD \
     -p $PORT:$PORT \
     -d postgres

@@ -14,7 +14,7 @@
     "format": "run-s format:eslint format:prettier",
     "format:eslint": "eslint . --ext .ts --ignore-path .gitignore --fix",
     "format:prettier": "prettier . --ignore-path .gitignore --write",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js --config src/database/config/typeorm.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js --config src/providers/typeorm/config.ts",
     "typeorm:migration:generate": "yarn typeorm migration:generate -n migration",
     "typeorm:migration:run": "yarn typeorm migration:run",
     "test": "jest",
@@ -26,7 +26,7 @@
     "dev:database": "run-s dev:database:*",
     "dev:database:start": "./src/database/scripts/start.sh",
     "dev:database:migration": "yarn typeorm:migration:run",
-    "dev:database:fixture": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed --configName src/database/config/typeorm.ts",
+    "dev:database:fixture": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed --configName src/providers/typeorm/config.ts",
     "dev:app": "nest start --watch --debug",
     "build": "nest build",
     "start": "node dist/main"
