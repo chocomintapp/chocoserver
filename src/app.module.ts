@@ -9,7 +9,7 @@ import { DatabaseProviderModule } from "./providers/database/provider.module";
 @Module({
   imports: [
     GraphQLModule.forRoot({
-      autoSchemaFile: "scema.graphql",
+      autoSchemaFile: true,
     }),
     DatabaseProviderModule,
     BlocksModule,

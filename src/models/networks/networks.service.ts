@@ -11,8 +11,8 @@ export class NetworksService {
     private readonly networkRepository: Repository<Network>
   ) {}
 
-  async saveAll(networks: INetwork[]): Promise<Network[]> {
-    return await this.networkRepository.save(networks);
+  async findOneById(id): Promise<Network> {
+    return await this.networkRepository.findOne(id);
   }
 
   async findAll(): Promise<Network[]> {
