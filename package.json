@@ -7,7 +7,9 @@
   "private": true,
   "scripts": {
     "prepare": "husky install",
-    "clean": "rimraf dist",
+    "clean": "run-p clean:*",
+    "clean:app": "rimraf dist",
+    "clean:database": "./src/database/scripts/stop.sh",
     "lint": "eslint . --ext .ts --ignore-path .gitignore --max-warnings 0",
     "format": "run-s format:eslint format:prettier",
     "format:eslint": "eslint . --ext .ts --ignore-path .gitignore --fix",
@@ -23,9 +25,9 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "predev": "yarn clean",
     "dev": "run-s dev:*",
-    "dev:database": "./src/database/scripts/database.sh",
+    "dev:database": "./src/database/scripts/start.sh",
+    "dev:migration": "yarn typeorm:migration:run",
     "dev:app": "nest start --watch --debug",
-    "prebuild": "yarn clean",
     "build": "nest build",
     "start": "node dist/main"
   },

@@ -14,7 +14,6 @@ import { getTypeormConfig } from "../../../database/helpers/typeorm.helpers";
         username: databasePostgresConfigService.username,
         password: databasePostgresConfigService.password,
         database: databasePostgresConfigService.database,
-        migrationRun: appConfigService.migrationRun,
         ssl: appConfigService.isProduction,
       })
     ),

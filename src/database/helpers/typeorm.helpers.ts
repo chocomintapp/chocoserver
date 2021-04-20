@@ -12,7 +12,6 @@ export const getTypeormConfig = (typeOrmConfig) => ({
   username: typeOrmConfig.username,
   password: typeOrmConfig.password,
   database: typeOrmConfig.database,
-  migrationsRun: typeOrmConfig.migrationsRun,
   migrationsTableName,
   migrations: [`${__dirname}/../../${migrationPath}`],
   cli: {
