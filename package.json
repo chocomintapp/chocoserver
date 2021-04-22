@@ -14,7 +14,7 @@
     "format": "run-s format:eslint format:prettier",
     "format:eslint": "eslint . --ext .ts --ignore-path .gitignore --fix",
     "format:prettier": "prettier . --ignore-path .gitignore --write",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js --config src/providers/typeorm/config.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js --config src/database/scripts/typeorm.config.ts",
     "typeorm:migration:generate": "yarn typeorm migration:generate -n migration",
     "typeorm:migration:run": "yarn typeorm migration:run",
     "test": "jest",
@@ -26,7 +26,7 @@
     "dev:database": "run-s dev:database:*",
     "dev:database:start": "./src/database/scripts/start.sh",
     "dev:database:migration": "yarn typeorm:migration:run",
-    "dev:database:fixture": "ts-node ./node_modules/typeorm-seeding/dist/cli.js seed --configName src/providers/typeorm/config.ts",
+    "dev:database:fixture": "echo fixture",
     "dev:app": "nest start --watch --debug",
     "build": "nest build",
     "start": "node dist/main"
@@ -53,8 +53,7 @@
     "rimraf": "^3.0.2",
     "rxjs": "^6.6.6",
     "swagger-ui-express": "^4.1.6",
-    "typeorm": "^0.2.32",
-    "typeorm-seeding": "^1.6.1"
+    "typeorm": "^0.2.32"
   },
   "devDependencies": {
     "@chocomintapp/eslint-config-chocomint-nest": "^0.0.2",

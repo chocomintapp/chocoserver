@@ -1,1 +1,1 @@
-export const helloMessage = "Welcome to Chocoserver!";
+export const HELLO_MESSAGE = "Welcome to Chocoserver!";

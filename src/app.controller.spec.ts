@@ -2,7 +2,7 @@ import { Test, TestingModule } from "@nestjs/testing";
 import { AppController } from "./app.controller";
 import { AppService } from "./app.service";
 
-import { helloMessage } from "./common/constants/message.constant";
+import { HELLO_MESSAGE } from "./common/constants/message.constant";
 
 describe("AppController", () => {
   let appController: AppController;
@@ -17,8 +17,8 @@ describe("AppController", () => {
   });
 
   describe("root", () => {
-    it("should return helloMessage", () => {
-      expect(appController.getHello()).toBe(helloMessage);
+    it("should return HELLO_MESSAGE", () => {
+      expect(appController.getHello()).toBe(HELLO_MESSAGE);
     });
   });
 });

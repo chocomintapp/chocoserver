@@ -1,9 +1,7 @@
 import { Field } from "@nestjs/graphql";
-import { Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
-import { IBaseEntity } from "../interfaces/base.interface";
-
-export class EntityBase implements IBaseEntity {
+export class Base extends BaseEntity {
   @Field()
   @Column()
   @CreateDateColumn({ type: "timestamptz" })

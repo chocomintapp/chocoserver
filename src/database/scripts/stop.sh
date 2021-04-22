@@ -3,7 +3,7 @@ set -e
 
 export $(cat .development.env | xargs)
 
-DATABASE=$DATABASE_DATABASE
+DATABASE=$DB_DATABASE
 
 echo "stop database"
 docker kill $DATABASE || :
