@@ -24,12 +24,13 @@ export class ConfigService {
       username: this.dbUsername,
       password: this.dbPassword,
       database: this.dbDatabase,
-      entities: [`${__dirname}/../../models/**/entities/*.entity{.js,.ts}`],
-      migrations: [`${__dirname}/../../database/migrations/*{.js,.ts}`],
+      entities: [`${__dirname}/../models/**/entities/*.entity{.js,.ts}`],
+      migrations: [`${__dirname}/../database/migrations/*{.js,.ts}`],
       cli: {
         migrationsDir: "src/database/migrations",
       },
       migrationsTableName: "migration",
+      synchronize: !this.isProduction,
       ssl: this.isProduction,
     };
   }

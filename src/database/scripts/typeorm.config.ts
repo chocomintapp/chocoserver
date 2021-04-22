@@ -1,2 +1,2 @@
-import { configService } from "../../common/config/config.module";
+import { configService } from "../../config/config.module";
 export = configService.typeOrmConfig;

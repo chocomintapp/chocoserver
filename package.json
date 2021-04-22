@@ -25,7 +25,6 @@
     "dev": "run-s dev:*",
     "dev:database": "run-s dev:database:*",
     "dev:database:start": "./src/database/scripts/start.sh",
-    "dev:database:migration": "yarn typeorm:migration:run",
     "dev:database:fixture": "echo fixture",
     "dev:app": "nest start --watch --debug",
     "build": "nest build",
