@@ -1,31 +1,22 @@
 import { Test, TestingModule } from "@nestjs/testing";
 import { GetNetworkArgs } from "./dto/get-network.args";
 import { GetNetworksArgs } from "./dto/get-networks.args";
-import { Network } from "./entities/network.entity";
 import { NetworksResolver } from "./networks.resolver";
 import { NetworksService } from "./networks.service";
+import { makeNetworkFixture } from "../../database/factories/network.factory";
+import { getMockService } from "../../helpers/typeorm.helper";
 
 describe("NetworksResolver", () => {
+  let service: NetworksService;
   let resolver: NetworksResolver;
 
-  // FIXME #17: This is too much mock, it can be integrated with database factory
-  // but this may require file structure refactoring, so leave it as it is just for now
-  const network = new Network();
-  const getNetworkArgs = new GetNetworkArgs();
-  const getNetworksArgs = new GetNetworksArgs();
-
-  const findOneByIdResult = network;
-  const findAllResult = [network];
-
-  const mockRepository = {
-    findOneById: () => findOneByIdResult,
-    findAll: () => findAllResult,
-  };
+  const fixture = makeNetworkFixture();
 
   beforeEach(async () => {
     const module: TestingModule = await Test.createTestingModule({
-      providers: [NetworksResolver, { provide: NetworksService, useValue: mockRepository }],
+      providers: [NetworksResolver, { provide: NetworksService, useValue: getMockService(fixture) }],
     }).compile();
+    service = module.get<NetworksService>(NetworksService);
     resolver = module.get<NetworksResolver>(NetworksResolver);
   });
 
@@ -33,11 +24,13 @@ describe("NetworksResolver", () => {
     expect(resolver).toBeDefined();
   });
 
-  it("network should returns correct result", async () => {
-    expect(await resolver.network(getNetworkArgs)).toEqual(findOneByIdResult);
+  it("network", async () => {
+    const getNetworkArgs = new GetNetworkArgs();
+    expect(await resolver.network(getNetworkArgs)).toEqual(fixture);
   });
 
-  it("networks should returns correct result", async () => {
-    expect(await resolver.networks(getNetworksArgs)).toEqual(findAllResult);
+  it("networks", async () => {
+    const getNetworksArgs = new GetNetworksArgs();
+    expect(await resolver.networks(getNetworksArgs)).toEqual([fixture]);
   });
 });

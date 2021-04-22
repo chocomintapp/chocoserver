@@ -1,26 +1,20 @@
 import { Test } from "@nestjs/testing";
-import { getRepositoryToken, TypeOrmModule } from "@nestjs/typeorm";
+import { getRepositoryToken } from "@nestjs/typeorm";
 
 import { GetNetworkArgs } from "./dto/get-network.args";
 import { GetNetworksArgs } from "./dto/get-networks.args";
 import { Network } from "./entities/network.entity";
 import { NetworksService } from "./networks.service";
-
-import { Repository } from "typeorm";
-import { makeNetworkFixture } from "./fixtures/network.fixtures";
+import { makeNetworkFixture } from "../../database/factories/network.factory";
+import { getMockRepository } from "../../helpers/typeorm.helper";
 
 describe("NetworksService", () => {
   let service: NetworksService;
-  let repository: Repository<Network>;
-  const network = new Network();
-  const getNetworkArgs = new GetNetworkArgs();
-  const getNetworksArgs = new GetNetworksArgs();
-
+  const fixture = makeNetworkFixture();
   beforeEach(async () => {
     const module = await Test.createTestingModule({
-      providers: [NetworksService, { provide: getRepositoryToken(Network), useClass: Repository }],
+      providers: [NetworksService, { provide: getRepositoryToken(Network), useValue: getMockRepository(fixture) }],
     }).compile();
-    repository = module.get<Repository<Network>>(getRepositoryToken(Network));
     service = module.get<NetworksService>(NetworksService);
   });
 
@@ -29,12 +23,12 @@ describe("NetworksService", () => {
   });
 
   it("findOneById", async () => {
-    const fixture = makeNetworkFixture();
-    jest.spyOn(repository, "findOne").mockResolvedValueOnce(fixture);
+    const getNetworkArgs = new GetNetworkArgs();
     expect(await service.findOneById(getNetworkArgs)).toEqual(fixture);
   });
 
-  it("findAll should returns correct result", async () => {
-    // expect(await service.findAll(getNetworksArgs)).toEqual("");
+  it("findAll", async () => {
+    const getNetworksArgs = new GetNetworksArgs();
+    expect(await service.findAll(getNetworksArgs)).toEqual([fixture]);
   });
 });

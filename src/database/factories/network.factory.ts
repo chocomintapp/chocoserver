@@ -1,5 +1,5 @@
 import * as faker from "faker";
-import { Network } from "../entities/network.entity";
+import { Network } from "../../models/networks/entities/network.entity";
 
 export const makeNetworkFixture = () => {
   const network = new Network();

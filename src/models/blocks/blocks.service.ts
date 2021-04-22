@@ -1,9 +1,10 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { In, Repository } from "typeorm";
+import { Repository } from "typeorm";
 import { GetBlockArgs } from "./dto/get-block.args";
 import { GetBlocksArgs } from "./dto/get-blocks.args";
 import { Block } from "./entities/block.entity";
+import { buildTypeormQueryWhereFromArgsDto } from "../../helpers/typeorm.helper";
 
 @Injectable()
 export class BlocksService {
@@ -18,16 +19,7 @@ export class BlocksService {
   }
 
   async findAll(args: GetBlocksArgs): Promise<Block[]> {
-    const { blockNumbers, chainIds } = args;
-
-    const where = {} as any;
-    if (blockNumbers) {
-      where.blockNumber = In(blockNumbers);
-    }
-    if (chainIds) {
-      where.network = In(chainIds);
-    }
-
+    const where = buildTypeormQueryWhereFromArgsDto(args);
     return await this.blockRepository.find({
       where,
       relations: ["network"],

@@ -9,3 +9,17 @@ export const buildTypeormQueryWhereFromArgsDto = (obj) => {
       })
   );
 };
+
+export const getMockRepository = (fixture) => {
+  return {
+    findOne: () => fixture,
+    find: () => [fixture],
+  };
+};
+
+export const getMockService = (fixture) => {
+  return {
+    findOneById: () => fixture,
+    findAll: () => [fixture],
+  };
+};

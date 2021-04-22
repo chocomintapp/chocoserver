@@ -1,6 +1,6 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
-import { In, Repository } from "typeorm";
+import { Repository } from "typeorm";
 import { GetNetworkArgs } from "./dto/get-network.args";
 import { GetNetworksArgs } from "./dto/get-networks.args";
 import { Network } from "./entities/network.entity";
@@ -14,7 +14,8 @@ export class NetworksService {
   ) {}
 
   async findOneById(args: GetNetworkArgs): Promise<Network> {
-    return await this.networkRepository.findOne(args, { relations: ["block"] });
+    const { chainId } = args;
+    return await this.networkRepository.findOne({ chainId }, { relations: ["block"] });
   }
 
   async findAll(args: GetNetworksArgs): Promise<Network[]> {
