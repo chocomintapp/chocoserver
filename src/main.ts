@@ -1,18 +1,18 @@
 import { NestFactory } from "@nestjs/core";
 import { SwaggerModule, DocumentBuilder } from "@nestjs/swagger";
-import { ApiAppModule } from "./app/api/app.module";
+import { AppModule } from "./app.module";
 import { configService } from "./config/config.module";
 
 async function bootstrap() {
-  const apiApp = await NestFactory.create(ApiAppModule);
+  const app = await NestFactory.create(AppModule);
   if (!configService.isProduction) {
     const document = SwaggerModule.createDocument(
-      apiApp,
+      app,
       new DocumentBuilder().setTitle("Chocoserver API").setDescription("Chocoserver API").build()
     );
-    SwaggerModule.setup("docs", apiApp, document);
+    SwaggerModule.setup("docs", app, document);
   }
-  apiApp.enableShutdownHooks();
-  await apiApp.listen(configService.appPort);
+  app.enableShutdownHooks();
+  await app.listen(configService.appPort);
 }
 bootstrap();

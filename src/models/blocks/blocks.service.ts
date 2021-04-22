@@ -20,8 +20,6 @@ export class BlocksService {
   async findAll(args: GetBlocksArgs): Promise<Block[]> {
     const { blockNumbers, chainIds } = args;
 
-    // FIXME #16: I'm feeling that this where implementation look not good...
-
     const where = {} as any;
     if (blockNumbers) {
       where.blockNumber = In(blockNumbers);

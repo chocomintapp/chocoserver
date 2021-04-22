@@ -4,6 +4,7 @@ import { In, Repository } from "typeorm";
 import { GetNetworkArgs } from "./dto/get-network.args";
 import { GetNetworksArgs } from "./dto/get-networks.args";
 import { Network } from "./entities/network.entity";
+import { buildTypeormQueryWhereFromArgsDto } from "../../helpers/typeorm.helper";
 
 @Injectable()
 export class NetworksService {
@@ -13,20 +14,11 @@ export class NetworksService {
   ) {}
 
   async findOneById(args: GetNetworkArgs): Promise<Network> {
-    const { chainId } = args;
-    return await this.networkRepository.findOne({ chainId }, { relations: ["block"] });
+    return await this.networkRepository.findOne(args, { relations: ["block"] });
   }
 
   async findAll(args: GetNetworksArgs): Promise<Network[]> {
-    const { chainIds } = args;
-
-    // FIXME #16: I'm feeling that this where implementation look not good...
-
-    const where = {} as any;
-    if (chainIds) {
-      where.network = In(chainIds);
-    }
-
+    const where = buildTypeormQueryWhereFromArgsDto(args);
     return await this.networkRepository.find({
       where,
       relations: ["blocks"],

@@ -37,7 +37,6 @@ describe("BlocksService", () => {
   });
 
   it("findAll should returns correct result", async () => {
-    // FIXME #16: If this issue fixed and where has if condition, test needs to be added
     expect(await service.findAll(getBlocksArgs)).toEqual(findResult);
   });
 });

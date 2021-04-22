@@ -14,7 +14,7 @@
     "format": "run-s format:eslint format:prettier",
     "format:eslint": "eslint . --ext .ts --ignore-path .gitignore --fix",
     "format:prettier": "prettier . --ignore-path .gitignore --write",
-    "typeorm": "ts-node ./node_modules/typeorm/cli.js --config src/database/scripts/typeorm.config.ts",
+    "typeorm": "ts-node ./node_modules/typeorm/cli.js --config src/database/scripts/typeorm.ts",
     "typeorm:migration:generate": "yarn typeorm migration:generate -n migration",
     "typeorm:migration:run": "yarn typeorm migration:run",
     "test": "jest",
