@@ -1,9 +1,10 @@
 import * as faker from "faker";
-import { Network } from "../../models/networks/entities/network.entity";
+import { INetwork } from "../../models/networks/interfaces/network.interface";
 
-export const makeNetworkFixture = () => {
-  const network = new Network();
-  network.chainId = faker.datatype.number();
-  network.name = faker.lorem.word();
-  return network;
+export const makeNetworkFixture = (overrideParams?: Partial<INetwork>): INetwork => {
+  return {
+    chainId: faker.datatype.number(),
+    name: faker.lorem.word(),
+    ...overrideParams,
+  };
 };

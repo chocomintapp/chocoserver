@@ -1,10 +1,11 @@
 import * as faker from "faker";
-import { Block } from "../../models/blocks/entities/block.entity";
+import { IBlock } from "../../models/blocks/interfaces/block.interface";
 import { makeNetworkFixture } from "./network.factory";
 
-export const makeBlockFixture = () => {
-  const block = new Block();
-  block.blockNumber = faker.datatype.number();
-  block.network = makeNetworkFixture();
-  return block;
+export const makeBlockFixture = (overrideParams?: Partial<IBlock>): IBlock => {
+  return {
+    blockNumber: faker.datatype.number(),
+    network: makeNetworkFixture(),
+    ...overrideParams,
+  };
 };

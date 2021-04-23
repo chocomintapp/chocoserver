@@ -1,10 +1,11 @@
 import { Injectable } from "@nestjs/common";
 import { InjectRepository } from "@nestjs/typeorm";
 import { Repository } from "typeorm";
+import { buildTypeormQueryWhereFromArgsDto } from "../../helpers/typeorm.helper";
 import { GetNetworkArgs } from "./dto/get-network.args";
 import { GetNetworksArgs } from "./dto/get-networks.args";
 import { Network } from "./entities/network.entity";
-import { buildTypeormQueryWhereFromArgsDto } from "../../helpers/typeorm.helper";
+import { INetwork } from "./interfaces/network.interface";
 
 @Injectable()
 export class NetworksService {
@@ -24,5 +25,13 @@ export class NetworksService {
       where,
       relations: ["blocks"],
     });
+  }
+
+  async save(network: INetwork): Promise<Network> {
+    return await this.networkRepository.save(network);
+  }
+
+  async saveAll(networks: INetwork[]): Promise<Network[]> {
+    return await this.networkRepository.save(networks);
   }
 }

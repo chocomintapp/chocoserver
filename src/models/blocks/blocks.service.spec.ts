@@ -1,11 +1,11 @@
 import { Test } from "@nestjs/testing";
 import { getRepositoryToken } from "@nestjs/typeorm";
+import { makeBlockFixture } from "../../database/factories/block.factory";
+import { getMockRepository } from "../../helpers/typeorm.helper";
 import { BlocksService } from "./blocks.service";
 import { GetBlockArgs } from "./dto/get-block.args";
 import { GetBlocksArgs } from "./dto/get-blocks.args";
 import { Block } from "./entities/block.entity";
-import { getMockRepository } from "../../helpers/typeorm.helper";
-import { makeBlockFixture } from "../../database/factories/block.factory";
 
 describe("BlocksService", () => {
   let service: BlocksService;
@@ -21,13 +21,21 @@ describe("BlocksService", () => {
     expect(service).toBeDefined();
   });
 
-  it("findOneById should returns correct result", async () => {
+  it("findOneById", async () => {
     const getBlockArgs = new GetBlockArgs();
     expect(await service.findOneById(getBlockArgs)).toEqual(fixture);
   });
 
-  it("findAll should returns correct result", async () => {
+  it("findAll", async () => {
     const getBlocksArgs = new GetBlocksArgs();
     expect(await service.findAll(getBlocksArgs)).toEqual([fixture]);
+  });
+
+  it("save", async () => {
+    expect(await service.save(fixture)).toEqual(fixture);
+  });
+
+  it("saveAll", async () => {
+    expect(await service.saveAll([fixture])).toEqual([fixture]);
   });
 });
